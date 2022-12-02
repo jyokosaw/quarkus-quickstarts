@@ -26,7 +26,7 @@ for help setting up your environment.
 
 Launch the Maven build on the checked out sources of this demo:
 
-> ./mvnw package
+> ./mvnw package -Dmaven.test.skip=true
 
 ### Live coding with Quarkus
 
@@ -53,7 +53,7 @@ conventional jar file.
 
 First compile it:
 
-> ./mvnw package
+> ./mvnw package -Dmaven.test.skip=true
 
 Then run it:
 
@@ -77,3 +77,13 @@ native executable:
 After getting a cup of coffee, you'll be able to run this executable directly:
 
 > ./target/getting-started-1.0.0-SNAPSHOT-runner
+
+### ADD jyokosaw
+
+> oc new-app --context-dir=rhdg-hotrod-client --name=rhdgclt-on-quarkus 'registry.access.redhat.com/ubi8/openjdk-11~https://github.com/jyokosaw/quarkus-quickstarts.git'
+
+> oc get svc
+> oc expose svc/rhdgclt-on-quarkus --port=8080
+> oc get route
+> 
+> 

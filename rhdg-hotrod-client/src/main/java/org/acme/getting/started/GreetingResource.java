@@ -54,29 +54,7 @@ public class GreetingResource {
                                 "</cache-container>" +
                                 "</infinispan>"
                 );
-        /*
-        builder.statistics().enable().jmxEnable()
-                .addServer()
-                .host(JDG_HOST)
-                .port(HOTROD_PORT)
-                .security()
-                .authentication()
-                .username("admin")
-                .password("j.yoko31")
-                .remoteCache(CACHE_NAME)
-                .configuration(
-                      "<infinispan>" +
-                         "<cache-container>" +
-                            "<distributed-cache name=\"" + CACHE_NAME + "\">" +
-                               "<encoding media-type=\"application/x-protostream\"/>" +
-                            "</distributed-cache>" +
-                         "</cache-container>" +
-                      "</infinispan>"
-                );
-         */
 
-        // Connect to the server
-        //RemoteCacheManager cacheManager = Infinispan.connect();
         RemoteCacheManager cacheManager = new RemoteCacheManager(builder.build());
 
         // Obtain the remote cache
@@ -110,7 +88,7 @@ public class GreetingResource {
 
         // Stop the cache manager and release all resources
         cacheManager.close();
-        //cacheManager.stop();
+        cacheManager.stop();
 
         return "Finished.";
     }
